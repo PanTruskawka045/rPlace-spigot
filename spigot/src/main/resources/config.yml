@@ -1,0 +1,11 @@
+nats:
+  host: localhost
+  port: 4222
+
+board:
+  size: 64
+  cooldown: 120
+  kick-after-place: true
+
+world:
+  disable-auto-save: true

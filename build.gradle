@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+group = 'me.pan_truskawka045'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+allprojects {
+    apply plugin: "java"
+    apply plugin: "com.github.johnrengelman.shadow"
+
+    sourceCompatibility = 8
+    targetCompatibility = 8
+    compileJava.options.encoding = 'UTF-8'
+
+    tasks.withType(Jar).configureEach {
+        dependsOn test
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Jar).configureEach {
+        destinationDirectory = file("$rootDir/.out/")
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        compileOnly group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
+        implementation group: 'io.nats', name: 'jnats', version: '2.14.0'
+    }
+
+}

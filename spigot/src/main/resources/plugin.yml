@@ -1,0 +1,12 @@
+name: rPlace
+version: 1.0
+main: me.pan_truskawka045.rplace.RPlacePlugin
+api-version: 1.16
+
+commands:
+  rplace:
+    description: rPlace command
+    usage: /rplace <subcommand>
+    aliases: [ rp ]
+    permission: rplace.command
+    permission-message: You don't have permission to use this command
