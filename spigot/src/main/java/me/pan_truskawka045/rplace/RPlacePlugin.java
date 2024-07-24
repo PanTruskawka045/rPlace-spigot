@@ -65,7 +65,7 @@ public class RPlacePlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(inventoryManager, this);
 
-        if(Bukkit.getSpawnRadius() > 0){
+        if (Bukkit.getSpawnRadius() > 0) {
             getLogger().warning("Spawn radius is set to " + Bukkit.getSpawnRadius() + " blocks. This may cause issues with the plugin. Please set it to 0 in server.properties");
         }
     }

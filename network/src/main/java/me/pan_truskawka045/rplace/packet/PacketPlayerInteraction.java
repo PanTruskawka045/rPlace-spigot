@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
-public class PacketPlayerInteraction extends Packet{
+public class PacketPlayerInteraction extends Packet {
 
     private UUID uuid;
 

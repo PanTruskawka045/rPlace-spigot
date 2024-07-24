@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class InventoryManager implements Listener {
 
-    private static final Material[] materials = new Material[]{
+    private static final Material[] MATERIALS = new Material[]{
             Material.PURPLE_WOOL,
             Material.MAGENTA_WOOL,
             Material.PINK_WOOL,
@@ -38,17 +38,16 @@ public class InventoryManager implements Listener {
     };
 
     public void openBlockSelection(Player player) {
-        int size = (int) Math.ceil(materials.length / 7f) + 2;
+        int size = (int) Math.ceil(MATERIALS.length / 7f) + 2;
 
         Inventory inv = Bukkit.getServer().createInventory(new BlockSelectionInventoryHolder(), size * 9, Component.text("Select a block"));
 
-        for (int i = 0; i < materials.length; i++) {
-
-            ItemStack item = new ItemStack(materials[i]);
+        for (int i = 0; i < MATERIALS.length; i++) {
+            ItemStack item = new ItemStack(MATERIALS[i]);
             ItemMeta itemMeta = item.getItemMeta();
             itemMeta.displayName(Component.text("Click to select this color").color(TextColor.color(0xFFC600)));
             ItemStack selected = player.getInventory().getItem(0);
-            if (selected != null && selected.getType() == materials[i]) {
+            if (selected != null && selected.getType() == MATERIALS[i]) {
                 itemMeta.lore(Arrays.asList(Component.empty(), Component.text("Selected").color(TextColor.color(0x00FF00))));
             }
 
@@ -59,9 +58,7 @@ public class InventoryManager implements Listener {
             inv.setItem(row * 9 + column, item);
         }
 
-
         player.openInventory(inv);
-
     }
 
     public void giveItems(Player player) {
@@ -78,7 +75,6 @@ public class InventoryManager implements Listener {
         for (int i = 0; i < 9; i++) {
             player.getInventory().setItem(i, item);
         }
-
     }
 
     @EventHandler
